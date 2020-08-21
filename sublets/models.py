@@ -67,6 +67,7 @@ class Subtenant(models.Model):
     photo_id = models.ImageField(upload_to='img')
     date = models.DateTimeField(auto_now=True)
     signature = models.CharField(max_length=200)
+    chosen_sub = models.ForeignKey(SubletListing, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.legal_name
