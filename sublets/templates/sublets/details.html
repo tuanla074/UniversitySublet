@@ -1,0 +1,13 @@
+{% extends 'sublets/base.html' %}
+
+{% block main_content %}
+    <div class="text-dark">
+                <h1 class="text-dark">Placeholder for img</h1><br/>
+                {{ detail_sublet.sublet_start_date }} <br />
+                {{ detail_sublet.sublet_end_date }} <br />
+                {{ detail_sublet.sublet_place.sublet_address }} <br />
+                {{ detail_sublet.sublet_place.sublet_company }} <br />
+                {{ detail_sublet.sublist_price}} CAD<br />
+                {{ detail_sublet.utilities}}
+    </div>
+{% endblock %}

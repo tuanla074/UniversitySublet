@@ -1,0 +1,30 @@
+{% extends 'sublets/base.html' %}
+
+{% block main_content %}
+{% if sublet_listing %}
+    <ul style="list-style-type:none" class="text-dark">
+    <div class="row">
+    {% for sublet in sublet_listing %}
+        {% if sublet.sublet_status == 1%}
+            <li class="col-md-5 border border-dark text-dark">
+                <a href="{% url 'sublets:details' listing_id=sublet.id%}">
+                <h1 class="text-dark">Placeholder for img</h1><br/>
+                </a>
+                {{ sublet.sublet_start_date }} <br />
+                {{ sublet.sublet_end_date }} <br />
+                {{ sublet.sublet_place.sublet_address }} <br />
+                {{ sublet.sublet_place.sublet_company }} <br />
+                {{ sublet.sublist_price}} CAD<br />
+                {{ sublet.utilities}}
+            {% if forloop.counter|divisibleby:"4" and not forloop.last %}
+                </div><div class="row">
+            {% endif %}
+            </li>
+        {% endif %}
+    {% endfor %}
+    </div>
+    </ul>
+{% else %}
+    <p>SORRY, NO OFFER IS AVAILABLE</p>
+{% endif %}
+{% endblock %}
