@@ -52,7 +52,7 @@ class SubletListing(models.Model):
         pre_text = self.sublet_place.sublet_address + "-" + self.room_number
         if self.sublet_status == 1:
             return "Status (" + pre_text + "): showing"
-        return "Status (" + pre_text + "): not show"
+        return "Status ( " + pre_text + "): not show"
 
 
 class ImageModel(models.Model):
