@@ -1,28 +1,25 @@
 {% extends 'sublets/base.html' %}
 
 {% block main_content %}
-    <h1>Form Demo</h1>
-    <form>
-      <fieldset>
-        <legend>Text input</legend>
-        <p>
-          <label>Text box</label>
-          <input type = "text"
-                 id = "myText"
-                 value = "text here" />
-        </p>
-        <p>
-          <label>Password</label>
-          <input> type = "password"
-                  id = "myPwd"
-                  value = "secret" />
-        </p>
-        <p>
-          <label>Text Area</label>
-          <textarea> id = "myTextArea"
-                  rows = "3"
-                  cols = "80">Your text here</textarea>
-        </p>
-      </fieldset>
+
+    <form action="LOCATION WE WOULD LIKE TO SEND THE DATA">
+        <h1>Subtenant Information</h1>
+            <label for="fullName">Full Legal Name:</label><br>
+            <input type="text" id="fullName" name="fullname"/><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"/><br>
+            <label for="phone">Phone number:</label><br>
+            <input type="tel" id="phone" name="phone"/><br>
+            <label for="date">Date:</label><br>
+            <input type="date" id="date" name="date"/><br>
+            <label for="photoId">Upload Photo ID:</label><br>
+            <input type="file" id="photoId" name="photoId"><br><br>
+            <div style="padding:20px"></div>
+            <embed type="application/pdf" src="Generic_Sublet_Agreement_11th.pdf"
+                   style="width:100%; height:620px">
+            <label for="signature">By typing your name as a signature you are
+                agreeing to the terms and conditions stated in ...</label><br>
+            <input type="text" id="signature" name="signature"><br>
+            <br><input type="submit" value="Submit"><br><br>
     </form>
 {% endblock %}
