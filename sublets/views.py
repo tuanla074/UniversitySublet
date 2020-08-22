@@ -18,3 +18,7 @@ def details(request, listing_id):
         SubletListing.objects.select_related('sublet_place', 'sublet_gender', 'sublet_legal_fee',
                                              'sublet_owner_info').all(), pk=listing_id)
     return render(request, 'sublets/details.html', {'detail_sublet': detail_sublet})
+
+
+def subtenantInfo(request, listing_id):
+    return render(request, 'sublets/subtenantInfo.html')
