@@ -2,15 +2,19 @@ from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from sublets.models import SubletListing
+from .filters import SubletFilter
 
 from django.http import HttpResponse
 
 
 def index(request):
-    listing = SubletListing.objects.select_related('sublet_place', 'sublet_gender', 'sublet_legal_fee',
-                                                   'sublet_owner_info').all()
+    listing = SubletListing.objects.all()
+
+    my_filter = SubletFilter(request.GET, queryset=listing)
+    listing = my_filter.qs
     context = {
-        'sublet_listing': listing
+        'sublet_listing': listing,
+        'my_filter': my_filter
     }
     return render(request, 'sublets/index.html', context)
 

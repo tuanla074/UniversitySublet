@@ -1,6 +1,15 @@
 {% extends 'sublets/base.html' %}
 
+
 {% block main_content %}
+    <div class="row">
+    <div class="card card-body">
+    <form method="get">
+        {{ my_filter.form }}
+        <button class="btn btn-dark" type="submit">Search</button>
+    </form>
+    </div>
+    </div>
 {% if sublet_listing %}
     <ul style="list-style-type:none" class="text-dark">
     <div class="row">
