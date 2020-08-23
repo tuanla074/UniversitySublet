@@ -38,8 +38,8 @@ class SubletListing(models.Model):
     sublet_place = models.ForeignKey(SubletPlace, on_delete=models.CASCADE)
     sublet_owner_info = models.ForeignKey(SubletOwnerInfo, on_delete=models.CASCADE)
     sublist_price = models.FloatField(default=0)
-    sublet_start_date = models.DateTimeField()
-    sublet_end_date = models.DateTimeField()
+    sublet_start_date = models.DateField()
+    sublet_end_date = models.DateField()
     sublet_status = models.IntegerField(default=1)
     parking_cost = models.FloatField(default=0)
     total_room = models.IntegerField(default=1)
@@ -52,7 +52,7 @@ class SubletListing(models.Model):
         pre_text = self.sublet_place.sublet_address + "-" + self.room_number
         if self.sublet_status == 1:
             return "Status [" + pre_text + "]: showing"
-        return "Status [" + pre_text + "]: not show"
+        return "Status [" + pre_text + "]: not showing"
 
 
 class ImageModel(models.Model):
@@ -65,7 +65,7 @@ class Subtenant(models.Model):
     phone_number = models.CharField(max_length=50)
     email = models.CharField(max_length=800)
     photo_id = models.ImageField(upload_to='img')
-    date = models.DateTimeField(auto_now=True)
+    date = models.DateField(auto_now=True)
     signature = models.CharField(max_length=200)
     chosen_sub = models.ForeignKey(SubletListing, on_delete=models.CASCADE, default=1)
 
