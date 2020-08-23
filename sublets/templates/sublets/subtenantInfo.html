@@ -2,9 +2,11 @@
 
 {% block main_content %}
 
-<div style="padding:60px"></div>
+{% if error_message %} <p><strong> {{error_message}} </strong></p> {% endif %}
 
-<form action="LOCATION WE WOULD LIKE TO SEND THE DATA">
+<div style="padding:60px"></div>
+<form action="{% url 'sublets:legalFee' listing_id=sublet_id %}" method="POST">
+        {% csrf_token %}
         <fieldset>
         <legend>Subtenant Information</legend>
         <label for="fullName">Full Legal Name:</label><br>

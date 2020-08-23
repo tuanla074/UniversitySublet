@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-from sublets.models import SubletListing
+from sublets.models import SubletListing, Subtenant
 from .filters import SubletFilter
 
 from django.http import HttpResponse
@@ -27,7 +27,7 @@ def details(request, listing_id):
 
 
 def subtenantInfo(request, listing_id):
-    return render(request, 'sublets/subtenantInfo.html')
+    return render(request, 'sublets/subtenantInfo.html', {'sublet_id': listing_id})
 
 
 def pdf_view(request, listing_id):
@@ -36,3 +36,19 @@ def pdf_view(request, listing_id):
         response['Content-Disposition'] = 'inline;filename=some_file.pdf'
         return response
     pdf.closed
+
+
+def legalFee(request, listing_id):
+    if request.method == 'POST':
+        fullname = request.POST.get('fullname', False)
+        phone = request.POST.get('phone', False)
+        user_email = request.POST.get('email', False)
+        photoId = request.POST.get('photoId', False)
+        user_signature = request.POST.get('signature', False)
+        subtenant = Subtenant(legal_name=fullname, phone_number=phone, email=user_email,
+                              photo_id=photoId, signature=user_signature,
+                              chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id))
+        subtenant.save()
+    return render(request, 'sublets/legalFee.html')
+
+
