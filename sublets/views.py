@@ -5,6 +5,20 @@ from sublets.models import SubletListing, Subtenant
 from .filters import SubletFilter
 
 from django.http import HttpResponse
+from django.template.loader import get_template
+from io import BytesIO
+from django.core.mail import EmailMessage
+from xhtml2pdf import pisa
+
+
+def render_to_pdf(template_src, context_dict={}):
+    template = get_template(template_src)
+    html = template.render(context_dict)
+    result = BytesIO()
+    pdf = pisa.pisaDocument(BytesIO(html.encode("ISO-8859-1")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), content_type='application/pdf')
+    return None
 
 
 def index(request):
@@ -49,6 +63,15 @@ def legalFee(request, listing_id):
                               photo_id=photoId, signature=user_signature,
                               chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id))
         subtenant.save()
-    return render(request, 'sublets/legalFee.html')
 
+        #PDF
+        pdf = render_to_pdf('sublets/subtenantInfo.html', {'sublet_id': listing_id})
+        response = HttpResponse(pdf, content_type='application/pdf')
+        # Download directly: response['Content-Disposition'] = 'attachment; filename="contract.pdf"'
 
+        #Mail (Unable to send pdf yet)
+        mail = EmailMessage('This is your Contract', 'Read the subject', 'unisublet@gmail.com'
+                            , [user_email])
+        mail.attach_file('img/Generic_Sublet_Agreement_11th.pdf')
+        mail.send()
+    return response
