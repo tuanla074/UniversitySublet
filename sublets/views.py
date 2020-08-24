@@ -65,6 +65,7 @@ def legalFee(request, listing_id):
         subtenant.save()
 
         #PDF
+        #change the HTML to contract later on
         pdf = render_to_pdf('sublets/subtenantInfo.html', {'sublet_id': listing_id})
         response = HttpResponse(pdf, content_type='application/pdf')
         # Download directly: response['Content-Disposition'] = 'attachment; filename="contract.pdf"'
