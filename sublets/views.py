@@ -1,10 +1,17 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
+from django.views.decorators.csrf import csrf_exempt
+
 from sublets.models import SubletListing, Subtenant
 from .filters import SubletFilter
-
 from django.http import HttpResponse
+import stripe
+import json
+from django.http import JsonResponse
+
+
+@csrf_exempt
 
 
 def index(request):
@@ -49,6 +56,7 @@ def legalFee(request, listing_id):
                               photo_id=photoId, signature=user_signature,
                               chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id))
         subtenant.save()
+
     return render(request, 'sublets/legalFee.html')
 
 
