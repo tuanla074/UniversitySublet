@@ -77,7 +77,12 @@ def legalFee(request, listing_id):
 def contract(request, listing_id):
     # PDF
     # change the HTML to contract later on
-    pdf = render_to_pdf('sublets/subtenantInfo.html', {'sublet_id': listing_id})
+    listing_info = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
+    renter_info = listing_info.subtenant_set.all()
+    if (renter_info):
+        renter_info = renter_info[len(renter_info)-1]
+    pdf = render_to_pdf('sublets/contract.html', {'contract_info': listing_info
+                                                  , 'renter_info': renter_info})
     response = HttpResponse(pdf, content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="contract.pdf"'
     return response
