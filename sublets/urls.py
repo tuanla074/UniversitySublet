@@ -11,5 +11,6 @@ urlpatterns = [
     path('<int:listing_id>/subtenantInfo/legalFee', views.legalFee, name="legalFee"),
     path('int:listing_id/subtenantInfo/Generic_Sublet_Agreement_11th.pdf', views.pdf_view,
          name="Generic_Sublet_Agreement_11th.pdf"),
+    path('<int:listing_id>/contract/', views.contract, name="contract"),
 
 ]

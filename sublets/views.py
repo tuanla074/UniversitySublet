@@ -6,9 +6,10 @@ from .filters import SubletFilter
 
 from django.http import HttpResponse
 from django.template.loader import get_template
-from io import BytesIO
+from io import BytesIO, StringIO
 from django.core.mail import EmailMessage
 from xhtml2pdf import pisa
+from django.core.files import File
 
 
 def render_to_pdf(template_src, context_dict={}):
@@ -64,15 +65,19 @@ def legalFee(request, listing_id):
                               chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id))
         subtenant.save()
 
-        #PDF
-        #change the HTML to contract later on
-        pdf = render_to_pdf('sublets/subtenantInfo.html', {'sublet_id': listing_id})
-        response = HttpResponse(pdf, content_type='application/pdf')
-        # Download directly: response['Content-Disposition'] = 'attachment; filename="contract.pdf"'
-
-        #Mail (Unable to send pdf yet)
-        mail = EmailMessage('This is your Contract', 'Read the subject', 'unisublet@gmail.com'
+        # Mail (send pdf link yet)
+        mail = EmailMessage('This is your Contract',
+                            'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
+                            str(listing_id) + '/contract', 'unisublet@gmail.com'
                             , [user_email])
-        mail.attach_file('img/Generic_Sublet_Agreement_11th.pdf')
         mail.send()
+    return render(request, 'sublets/legalFee.html')
+
+
+def contract(request, listing_id):
+    # PDF
+    # change the HTML to contract later on
+    pdf = render_to_pdf('sublets/subtenantInfo.html', {'sublet_id': listing_id})
+    response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="contract.pdf"'
     return response
