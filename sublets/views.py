@@ -112,11 +112,15 @@ def charge(request, listing_id):
 
 
 def successMsg(request, args):
-    amount = 50
+    chosen_sub = get_object_or_404(SubletListing.objects.all(), pk=args)
+    amount = chosen_sub.sublet_legal_fee.legal_fee
     # Mail (send pdf link yet)
+    renter_info = chosen_sub.subtenant_set.all()
+    if renter_info:
+        renter_info = renter_info[len(renter_info) - 1]
     mail = EmailMessage('This is your Contract',
                         'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
-                        str(1) + '/contract', 'unisublet@gmail.com'
-                        , ['nathan@gmail.com'])
+                        str(args) + '/contract', 'unisublet@gmail.com'
+                        , [renter_info.email])
     mail.send()
     return render(request, 'sublets/success.html', {'amount': amount})
