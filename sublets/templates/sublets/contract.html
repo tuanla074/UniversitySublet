@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 style="text-align: center">Contract</h1>
+<p>This agreement made on the day of 2020 between {{ contract_info.sublet_owner_info.sublet_owner_name }} (Hereinafter called the Tenants of the first part)
+And {{ renter_info.legal_name}} (Hereinafter called the Sub-tenant of the second part) </p>
+<p>
+    Whereas the Tenants are signatories to a certain Tenancy Agreement inclusive of the period of
+the sublets desired tenancy. {{ contract_info.sublet_owner_info.sublet_owner_name }} (Tenants)  and ___________ (Landlord) </p>
+<p>And whereas the Tenants are desirous of subletting their premises and whereas the subtenants
+are desirous of occupying the premises now currently rented by the tenants, municipally knows
+as {{ contract_info.sublet_place.sublet_address }} and the parties hereto agree as follows:</p>
+<p>1. The sub-tenants tenancy shall commence on {{contract_info.sublet_start_date}} and end on {{contract_info.sublet_end_date }}.</p>
+<p>2. The tenants direct the sub-tenants to pay the aforementioned rent directly to University
+Sublets (QuarterPoint Limited) or the sublet manager 3 days before the start of the next
+    payable month.</p>
+<p>3. The sub-tenant(s) shall pay the sum of {{contract_info.sublist_price}}$ per month for the period
+    of {{ contract_info.sublet_start_date }} - {{ contract_info.sublet_end_date }}</p>
+<p>4. The sub-tenants shall abide by all terms and conditions in the aforementioned Tenancy
+    Agreement as if they were signatories thereto.</p>
+<p>5. The sub-tenants shall be bound by all of the terms and conditions in the aforementioned
+    Tenancy Agreement.</p>
+<p>6. Any special conditions that are to apply to this agreement are noted in Schedule A of this document.</p>
+<p>This agreement signed on {{ renter_info.date }}.</p>
+<p>{{ renter_info.signature }}</p>
+<p>Sub-tenant</p>
+<p>__________________</p>
+<p>Tenant</p>
+<p>__________________</p>
+<p>Sublet Manager</p>
+<h1 style="text-align: center">Schedule A</h1>
+<table style="width:100%" border="solid">
+    <tr>
+        <td>A)</td>
+        <td>Unpaid rent may be collected from the Guarantor and will result in a missing payment
+report as well as damage to the sub-tenants and Guarantor credit scores.
+Late rent payments (payments made after the 1st day of a payable month) are subject to a $20
+    manual processing fee.</td>
+    </tr>
+    <tr>
+        <td>B)</td>
+        <td> Damages to the property by the sub-tenant or under the supervision of the sub-tenant
+are the responsibility of the sub-tenant. University Sublets and its Employees assume
+no responsibility for these damages. University Sublets also assumes zero liability for
+any misrepresentations of the sublet property or its details by the tenant.</td>
+    </tr>
+    <tr>
+        <td>C)</td>
+        <td> University Sublets (QuarterPoint Limited) agrees to pay all rent received from the subtenant to the tenant each payment period after deducting management fees of 20%.
+Any fees associated with this money transfer will be the responsibility of the tenant
+however flexible transfer options will be available.
+The tenant authorizes the sublet manager or the sub-tenant to pick up keys and
+communicate with the landlord on their behalf in the interest of completing the agreed
+upon sublet.</td>
+    </tr>
+    <tr>
+        <td>D)</td>
+        <td> The sub-tenant shall pay a deposit equal to first and last month rent within 5 days of
+the date the agreement was signed and before moving the start of the sublet. Failure to
+complete this action renders this entire agreement void at the request of the sublet
+manager or tenant. In the event of a lost key the sub-tenant and guarantor will be wholly responsible for the
+amount of the key deposit upon its loss.</td>
+    </tr>
+    <tr>
+        <td width="10%">E)</td>
+        <td> The sub-tenant is responsible for any and all utility, hydro, gas, or other bills incurred by the
+sub-tenant during their tenancy. This excludes any bills that are part of an all-inclusive
+package or other utility package included by landlord in the rent for a given lease.</td>
+    </tr>
+</table>
+<h1 style="text-align: center">GUARANTOR FORM</h1>
+<p>In consideration of the Owner (Tenant) allowing the renting of the Rented Premises to the Resident (SubTenant), the Guarantor, guarantees to the Owner, its successors and assigns, the payment by the
+Resident of rent (and all other sums of money in accordance with the provisions of the Sublet Agreement)
+and that the Resident will perform and observe all their covenants, agreements and obligations under this
+    agreement.</p>
+<p>The Guarantor agrees that he/she is primarily liable to the Owner and that he/she will not be released nor
+his/her liability under this Lease be limited or lessened by any variation in or departure from the terms of
+the Lease nor by the Owner granting time, accepting proposals, granting releases or otherwise dealing
+    with any of the Residents.</p>
+<p>The Guarantor by signing this agreement consents to a light credit check (this will not affect score) in order
+    to verify their creditworthiness.</p>
+<p>The Resident and Guarantor expressly acknowledge and agree, that together with the other occupants
+and Guarantors of the Rented Premises control the access to the whole of the rented premises, its
+common elements and individual rooms and as such agree to be jointly and severally liable together with
+other Occupants of the Rented Premises for any damage caused to the common area elements during
+the term of this agreement. The Resident and Guarantor further agree to immediately report any such
+damage to the Owner forthwith upon such damage occurring, including particulars as to the person(s) who
+    caused such damage.</p>
+<p>SUB-TENANT NAME: {{ renter_info.legal_name }}</p>
+<p>RENTED ADDRESS:{{ contract_info.sublet_place.sublet_address }}</p>
+<p>MONTHLY RENTAL AMOUNT: {{contract_info.sublist_price}}$</p>
+<p>RENTAL TERM: {{ contract_info.sublet_start_date }} - {{ contract_info.sublet_end_date }}</p>
+<p></p>
+<p>Guarantor Name : ____________________</p>
+<p>Phone # / Email:___________________</p>
+<p>Home Address:________________________</p>
+<p>THE GUARANTOR SIGNING THIS AGREEMENT TAKES FULL RESPONSIBILITY FOR ALL OF THE
+TERMS AND CONDITIONS IN THE “Sublet Agreement” THAT THE SUB-TENANT IS RESPONSIBLE
+    FOR, SIGNED BY THE SUB-TENANT FOR WHOM THEY ARE THE GUARANTOR.</p>
+<p>________________________(DATE)____________________(GUARANTOR)</p>
+
+</body>
+</html>
