@@ -79,7 +79,7 @@ def contract(request, listing_id):
     # change the HTML to contract later on
     listing_info = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
     renter_info = listing_info.subtenant_set.all()
-    if (renter_info):
+    if renter_info:
         renter_info = renter_info[len(renter_info)-1]
     pdf = render_to_pdf('sublets/contract.html', {'contract_info': listing_info
                                                   , 'renter_info': renter_info})
