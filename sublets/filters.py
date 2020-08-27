@@ -9,9 +9,9 @@ class DateInput(forms.DateInput):
 
 
 class SubletFilter(django_filters.FilterSet):
-    start_date = DateTimeFilter(field_name="sublet_start_date", lookup_expr='gte', label=' start date',
+    start_date = DateTimeFilter(field_name="start_date_search", lookup_expr='gte', label=' start date',
                                 widget=DateInput({'type': 'date'}))
-    end_date = DateTimeFilter(field_name="sublet_end_date", lookup_expr='lte', label='end date',
+    end_date = DateTimeFilter(field_name="end_date_search", lookup_expr='lte', label='end date',
                               widget=DateInput({'type': 'date'}))
     price = NumberFilter(field_name="sublist_price", lookup_expr='lte', label='max rent')
 
@@ -20,4 +20,5 @@ class SubletFilter(django_filters.FilterSet):
         fields = '__all__'
         exclude = ['sublet_owner_info', 'total_room', 'utilities',
                    'sublet_legal_fee', 'parking_cost', 'sublet_status',
-                   'room_number', 'sublet_start_date', 'sublet_end_date', 'sublist_price']
+                   'room_number', 'sublet_start_date', 'sublet_end_date', 'sublist_price',
+                   'start_date_search', 'end_date_search']
