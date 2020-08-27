@@ -3,12 +3,12 @@
 {% block main_content %}
     <div class="text-dark">
                 <h1 class="text-dark">Placeholder for img</h1><br/>
-                {{ detail_sublet.sublet_start_date }} <br />
-                {{ detail_sublet.sublet_end_date }} <br />
-                {{ detail_sublet.sublet_place.sublet_address }} <br />
-                {{ detail_sublet.sublet_place.sublet_company }} <br />
-                {{ detail_sublet.sublist_price}} CAD<br />
-                {{ detail_sublet.utilities}}<br />
-                <a href="./subtenantInfo/" class="btn btn-primary">Checkout</a>
+                Start date: {{ detail_sublet.sublet_start_date }}<br />
+                End date: {{ detail_sublet.sublet_end_date }} <br />
+                Address: {{ detail_sublet.sublet_place.sublet_address }} <br />
+                Company: {{ detail_sublet.sublet_place.sublet_company }} <br />
+                Price: {{ detail_sublet.sublist_price}} CAD<br />
+                Utilities: {{ detail_sublet.utilities}}<br />
+                <a href="./subtenantInfo/" class="btn btn-primary">Reserve</a>
     </div>
 {% endblock %}
