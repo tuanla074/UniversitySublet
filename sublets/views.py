@@ -68,9 +68,14 @@ def legalFee(request, listing_id):
         user_email = request.POST.get('email', False)
         photoId = request.POST.get('photoId', False)
         user_signature = request.POST.get('signature', False)
+        gr_name = request.POST.get('gr_name', False)
+        gr_phone = request.POST.get('gr_phone', False)
+        gr_email = request.POST.get('gr_email', False)
+        gr_address = request.POST.get('gr_addr', False)
         subtenant = Subtenant(legal_name=fullname, phone_number=phone, email=user_email,
                               photo_id=photoId, signature=user_signature,
-                              chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id))
+                              chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id),
+                              gr_name=gr_name, gr_phone=gr_phone, gr_email=gr_email, gr_address=gr_address)
         subtenant.save()
     return render(request, 'sublets/legalFee.html', {'listing_id': listing_id})
 

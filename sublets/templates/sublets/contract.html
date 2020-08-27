@@ -10,7 +10,7 @@
 And {{ renter_info.legal_name}} (Hereinafter called the Sub-tenant of the second part) </p>
 <p>
     Whereas the Tenants are signatories to a certain Tenancy Agreement inclusive of the period of
-the sublets desired tenancy. {{ contract_info.sublet_owner_info.sublet_owner_name }} (Tenants)  and ___________ (Landlord) </p>
+the sublets desired tenancy. {{ contract_info.sublet_owner_info.sublet_owner_name }} (Tenants)  and {{ contract_info.sublet_place.landlord }} (Landlord) </p>
 <p>And whereas the Tenants are desirous of subletting their premises and whereas the subtenants
 are desirous of occupying the premises now currently rented by the tenants, municipally knows
 as {{ contract_info.sublet_place.sublet_address }} and the parties hereto agree as follows:</p>
@@ -95,9 +95,10 @@ damage to the Owner forthwith upon such damage occurring, including particulars 
 <p>MONTHLY RENTAL AMOUNT: {{contract_info.sublist_price}}$</p>
 <p>RENTAL TERM: {{ contract_info.sublet_start_date }} - {{ contract_info.sublet_end_date }}</p>
 <p></p>
-<p>Guarantor Name : ____________________</p>
-<p>Phone # / Email:___________________</p>
-<p>Home Address:________________________</p>
+<p>Guarantor Name : {{ renter_info.gr_name }}</p>
+<p>Phone #: {{ renter_info.gr_phone }}</p>
+<p>Email: {{ renter_info.gr_email }}</p>
+<p>Home Address:{{ renter_info.gr_addr }}</p>
 <p>THE GUARANTOR SIGNING THIS AGREEMENT TAKES FULL RESPONSIBILITY FOR ALL OF THE
 TERMS AND CONDITIONS IN THE Sublet Agreement THAT THE SUB-TENANT IS RESPONSIBLE
     FOR, SIGNED BY THE SUB-TENANT FOR WHOM THEY ARE THE GUARANTOR.</p>
