@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 
 
@@ -41,6 +43,8 @@ class SubletListing(models.Model):
     sublist_price = models.FloatField(default=0)
     sublet_start_date = models.DateField()
     sublet_end_date = models.DateField()
+    start_date_search = models.DateField(default=datetime.now())
+    end_date_search = models.DateField(default=datetime.now())
     sublet_status = models.IntegerField(default=1)
     parking_cost = models.FloatField(default=0)
     total_room = models.IntegerField(default=1)
