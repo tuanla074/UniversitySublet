@@ -6,6 +6,7 @@ class SubletPlace(models.Model):
     sublet_company = models.CharField(max_length=100)
     sublet_address = models.CharField(max_length=800)
     website = models.CharField(max_length=800)
+    landlord = models.CharField(max_length=500, default='N/A')
 
     def __str__(self):
         return self.sublet_company
@@ -69,6 +70,11 @@ class Subtenant(models.Model):
     signature = models.CharField(max_length=200)
     chosen_sub = models.ForeignKey(SubletListing, on_delete=models.CASCADE, default=1)
     payment_status = models.IntegerField(default=0)
+    gr_name = models.CharField(max_length=500, default='N/A')
+    gr_email = models.CharField(max_length=800, default='N/A')
+    gr_phone = models.CharField(max_length=50, default='N/A')
+    gr_address = models.CharField(max_length=1000, default='N/A')
+
 
     def __str__(self):
         return self.legal_name
