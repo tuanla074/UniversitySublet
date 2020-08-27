@@ -77,6 +77,9 @@ def legalFee(request, listing_id):
                               chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id),
                               gr_name=gr_name, gr_phone=gr_phone, gr_email=gr_email, gr_address=gr_address)
         subtenant.save()
+        chosen_sub = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
+        chosen_sub.sublet_status = 0
+        chosen_sub.save()
     return render(request, 'sublets/legalFee.html', {'listing_id': listing_id})
 
 
