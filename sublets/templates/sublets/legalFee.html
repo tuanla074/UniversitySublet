@@ -40,7 +40,7 @@
 
 
 
-    <form action="{% url 'sublets:charge' listing_id %}" method="post" id="payment-form">
+    <form action="{% url 'sublets:charge' listing_id %}" method="post" id="payment-form" style="text-align: left">
         {% csrf_token %}
 
         <input required type="text" name="email" placeholder="Email...">
@@ -51,7 +51,7 @@
           Credit or debit card
         </label>
           <div>
-            <div style="width: 30em" #stripecardelement id="card-element"></div>
+            <div style="width: 30em" class="text-center" #stripecardelement id="card-element"></div>
         </div>
         <div>
         <!-- Used to display Element errors -->
@@ -60,7 +60,7 @@
       </div>
     <button>Submit Payment</button>
     </form>
-
+<br><br><img src="{% static 'images/credit_card_companies2.jpeg' %}" width="550" height="100">
 
 
 

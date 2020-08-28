@@ -209,14 +209,22 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#myPage">Logo</a>
+      <a class="navbar-brand" href="{% url 'sublets:index' %}">Logo</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+          <li><a href="{% url 'sublets:index' %}">HOME</a></li>
+          <li><a href="{% url 'sublets:About' %}">ABOUT</a></li>
+          <li><a href="{% url 'sublets:FAQ' %}">FAQ</a></li>
+      </ul>
     </div>
   </div>
 </nav>
 
+
 <div class="jumbotron text-center">
   <h1>University Sublet</h1>
-  <p>We mostly help people</p>
+  <p>Enter a message or a slogan</p>
 </div>
 <div id="services" class="container-fluid text-center">
     {% block main_content %}
@@ -225,6 +233,9 @@
 <!-- Image of location/map -->
 
 <footer class="container-fluid text-center" style="background-color:#3cb6d3">
+  <h1>Contact Us</h1>
+  <p>Email: placeholder@gmail.com</p>
+  <p>Phone: (289) 880-7808</p>
   <a href="#myPage" title="To Top">
     <span class="glyphicon glyphicon-chevron-up"></span>
   </a>

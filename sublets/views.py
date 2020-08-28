@@ -77,9 +77,7 @@ def legalFee(request, listing_id):
                               chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id),
                               gr_name=gr_name, gr_phone=gr_phone, gr_email=gr_email, gr_address=gr_address)
         subtenant.save()
-        chosen_sub = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
-        chosen_sub.sublet_status = 0
-        chosen_sub.save()
+
     return render(request, 'sublets/legalFee.html', {'listing_id': listing_id})
 
 
@@ -121,6 +119,8 @@ def charge(request, listing_id):
 
 def successMsg(request, args):
     chosen_sub = get_object_or_404(SubletListing.objects.all(), pk=args)
+    chosen_sub.sublet_status = 0
+    chosen_sub.save()
     amount = chosen_sub.sublet_legal_fee.legal_fee
     # Mail (send pdf link yet)
     renter_info = chosen_sub.subtenant_set.all()
@@ -132,3 +132,11 @@ def successMsg(request, args):
                         , [renter_info.email])
     mail.send()
     return render(request, 'sublets/success.html', {'amount': amount})
+
+
+def About(request):
+    return render(request, 'sublets/About.html')
+
+
+def FAQ(request):
+    return render(request, 'sublets/FAQ.html')

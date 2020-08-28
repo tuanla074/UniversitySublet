@@ -14,6 +14,8 @@ urlpatterns = [
     path('<int:listing_id>/contract/', views.contract, name="contract"),
     path('<int:listing_id>/charge/', views.charge, name="charge"),
     path('success/<int:args>/', views.successMsg, name="success"),
+    path('About/', views.About, name="About"),
+    path('FAQ/', views.FAQ, name="FAQ"),
 
 
 ]

@@ -18,12 +18,12 @@
                 <a href="{% url 'sublets:details' listing_id=sublet.id%}">
                 <h1 class="text-dark">Placeholder for img</h1><br/>
                 </a>
-                {{ sublet.sublet_start_date }} <br />
-                {{ sublet.sublet_end_date }} <br />
-                {{ sublet.sublet_place.sublet_address }} <br />
-                {{ sublet.sublet_place.sublet_company }} <br />
-                {{ sublet.sublist_price}} CAD<br />
-                {{ sublet.utilities}}
+                Start date: {{ sublet.sublet_start_date }} <br />
+                End date: {{ sublet.sublet_end_date }} <br />
+                Address: {{ sublet.sublet_place.sublet_address }} <br />
+                Company: {{ sublet.sublet_place.sublet_company }} <br />
+                Price: {{ sublet.sublist_price}} CAD<br />
+                Utilities: {{ sublet.utilities}}
             {% if forloop.counter|divisibleby:"4" and not forloop.last %}
             {% endif %}
             </li>
