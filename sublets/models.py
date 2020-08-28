@@ -50,6 +50,7 @@ class SubletListing(models.Model):
     total_room = models.IntegerField(default=1)
     room_number = models.CharField(max_length=100)
     utilities = models.CharField(max_length=5000)
+    sublet_description = models.TextField(max_length=5000, default="No description.")
     sublet_gender = models.ForeignKey(SubletGender, on_delete=models.CASCADE)
     sublet_legal_fee = models.ForeignKey(LegalFee, on_delete=models.CASCADE)
 
