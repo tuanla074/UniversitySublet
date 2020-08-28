@@ -39,7 +39,8 @@
     <script src="https://js.stripe.com/v3/"></script>
 
 
-
+<div class="row">
+<div class="col-sm-4">
     <form action="{% url 'sublets:charge' listing_id %}" method="post" id="payment-form" style="text-align: left">
         {% csrf_token %}
 
@@ -58,8 +59,13 @@
         <span style="width: 30em; height: 2em; letter-spacing: 0em" id="card-errors" role="alert"></span>
       </div>
       </div>
-    <button>Submit Payment</button>
+    <button class="button" style="color: white">Submit Payment</button>
     </form>
+</div>
+<div class="col-sm-4">
+    <p>TEXT</p>
+</div>
+    </div>
 <br><br><img src="{% static 'images/credit_card_companies2.jpeg' %}" width="550" height="100">
 
 
