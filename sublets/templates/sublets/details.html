@@ -10,7 +10,7 @@
 {% extends 'sublets/base.html' %}
 
 {% block main_content %}
-    <div class="text-dark">
+    <div class="text-dark" style="width:100%">
                 <h1 class="text-dark">Placeholder for img</h1><br/>
                 Start date: {{ detail_sublet.sublet_start_date }}<br />
                 End date: {{ detail_sublet.sublet_end_date }} <br />
@@ -18,8 +18,8 @@
                 Company: {{ detail_sublet.sublet_place.sublet_company }} <br />
                 Price: {{ detail_sublet.sublist_price}} CAD<br />
                 Utilities: {{ detail_sublet.utilities}}<br />
-                <div class="ex1">{{ detail_sublet.sublet_description }}</div>
-                <a href="subtenantInfo/" class="btn btn-primary">Reserve</a>
+                <div class="ex1" style="width:100%">{{ detail_sublet.sublet_description }}</div>
+                <a href="{% url 'sublets:subtenantInfo' listing_id=detail_sublet.id %}" class="specific_button btn">Reserve</a>
     </div>
     <h3>In order to reserve this property you must pay a $50 legal Fee.</h3>
 {% endblock %}

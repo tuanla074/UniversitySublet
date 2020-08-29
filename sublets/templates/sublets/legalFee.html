@@ -41,32 +41,33 @@
 
 <div class="row">
 <div class="col-sm-4">
-    <form action="{% url 'sublets:charge' listing_id %}" method="post" id="payment-form" style="text-align: left">
+    <form action="{% url 'sublets:charge' listing_id %}" method="post" id="payment-form" class="form-group"
+          style="text-align: left; border:none">
         {% csrf_token %}
 
-        <input required type="text" name="email" placeholder="Email...">
-		<input required type="text" name="Card Holder Name" placeholder="Card Holder Name">
+        <input required type="text" name="email" style="margin-bottom: 10px;" class="form-control" placeholder="Email...">
+		<input required type="text" name="Card Holder Name" class="form-control" placeholder="Card Holder Name">
 
       <div>
         <label for="card-element">
           Credit or debit card
         </label>
           <div>
-            <div style="width: 30em" class="text-center" #stripecardelement id="card-element"></div>
+            <div style="width: 100%;" class="text-center" #stripecardelement id="card-element"></div>
         </div>
         <div>
         <!-- Used to display Element errors -->
         <span style="width: 30em; height: 2em; letter-spacing: 0em" id="card-errors" role="alert"></span>
       </div>
       </div>
-    <button class="button" style="color: white">Submit Payment</button>
+    <button class="btn" style="background-color=#3cb6d3; margin-top: 10px; color:white">Submit Payment</button>
     </form>
 </div>
-<div class="col-sm-4">
-    <p>TEXT</p>
+<div class="col-sm-6">
+    <p style="float: right">This is a mandatory ${{ sublet.sublet_legal_fee.legal_fee }} legal fee for processing your reservation.</p>
 </div>
     </div>
-<br><br><img src="{% static 'images/credit_card_companies2.jpeg' %}" width="550" height="100">
+<img src="{% static 'images/credit_card_companies2.jpeg' %}" style="width: 100%;">
 
 
 

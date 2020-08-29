@@ -51,6 +51,7 @@ class SubletListing(models.Model):
     room_number = models.CharField(max_length=100)
     utilities = models.CharField(max_length=5000)
     sublet_description = models.TextField(max_length=5000, default="No description.")
+    sublet_main_image = models.ImageField(null=True, blank=True)
     sublet_gender = models.ForeignKey(SubletGender, on_delete=models.CASCADE)
     sublet_legal_fee = models.ForeignKey(LegalFee, on_delete=models.CASCADE)
 
@@ -63,7 +64,7 @@ class SubletListing(models.Model):
 
 class ImageModel(models.Model):
     main_image = models.ImageField(upload_to='img', null=True)
-    image = models.ForeignKey(SubletListing, on_delete=models.CASCADE)
+    image = models.ForeignKey(SubletListing, null=True, on_delete=models.CASCADE)
 
 
 class Subtenant(models.Model):
@@ -79,7 +80,6 @@ class Subtenant(models.Model):
     gr_email = models.CharField(max_length=800, default='N/A')
     gr_phone = models.CharField(max_length=50, default='N/A')
     gr_address = models.CharField(max_length=1000, default='N/A')
-
 
     def __str__(self):
         return self.legal_name

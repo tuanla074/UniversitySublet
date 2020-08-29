@@ -50,7 +50,10 @@ def details(request, listing_id):
 
 
 def subtenantInfo(request, listing_id):
-    return render(request, 'sublets/subtenantInfo.html', {'sublet_id': listing_id})
+    sublet = get_object_or_404(
+        SubletListing.objects.select_related('sublet_place', 'sublet_gender', 'sublet_legal_fee',
+                                             'sublet_owner_info').all(), pk=listing_id)
+    return render(request, 'sublets/subtenantInfo.html', {'sublet': sublet})
 
 
 def pdf_view(request, listing_id):
@@ -62,6 +65,7 @@ def pdf_view(request, listing_id):
 
 
 def legalFee(request, listing_id):
+    sublet_place = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
     if request.method == 'POST':
         fullname = request.POST.get('fullname', False)
         phone = request.POST.get('phone', False)
@@ -74,11 +78,11 @@ def legalFee(request, listing_id):
         gr_address = request.POST.get('gr_addr', False)
         subtenant = Subtenant(legal_name=fullname, phone_number=phone, email=user_email,
                               photo_id=photoId, signature=user_signature,
-                              chosen_sub=get_object_or_404(SubletListing.objects.all(), pk=listing_id),
-                              gr_name=gr_name, gr_phone=gr_phone, gr_email=gr_email, gr_address=gr_address)
+                              chosen_sub=sublet_place ,gr_name=gr_name, gr_phone=gr_phone,
+                              gr_email=gr_email, gr_address=gr_address)
         subtenant.save()
 
-    return render(request, 'sublets/legalFee.html', {'listing_id': listing_id})
+    return render(request, 'sublets/legalFee.html', {'listing_id': listing_id, 'sublet': sublet_place})
 
 
 def contract(request, listing_id):
@@ -126,11 +130,13 @@ def successMsg(request, args):
     renter_info = chosen_sub.subtenant_set.all()
     if renter_info:
         renter_info = renter_info[len(renter_info) - 1]
-    mail = EmailMessage('This is your Contract',
-                        'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
-                        str(args) + '/contract', 'unisublet@gmail.com'
-                        , [renter_info.email])
-    mail.send()
+        renter_info.payment_status = 1
+        renter_info.save()
+        mail = EmailMessage('This is your Contract',
+                            'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
+                            str(args) + '/contract', 'unisublet@gmail.com'
+                            , [renter_info.email])
+        mail.send()
     return render(request, 'sublets/success.html', {'amount': amount})
 
 

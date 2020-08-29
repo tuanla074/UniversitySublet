@@ -4,9 +4,9 @@
 {% block main_content %}
     <div class="row">
     <div class="card card-body">
-    <form method="get">
+    <form method="get" class="special_form">
         {{ my_filter.form }}
-        <button class="btn specific_button" type="submit">Search</button>
+        <button class="btn specific_button" type="submit" style="float: right">Search</button>
     </form>
     </div>
     </div>
@@ -15,7 +15,7 @@
     {% for sublet in sublet_listing %}
         {% if sublet.sublet_status == 1%}
             <li class="col-md-5 border border-dark text-dark text-center">
-                <a href="{% url 'sublets:details' listing_id=sublet.id%}">
+                <a href="{% url 'sublets:details' listing_id=sublet.id %}">
                 <h1 class="text-dark">Placeholder for img</h1><br/>
                 </a>
                 Start date: {{ sublet.sublet_start_date }} <br />
