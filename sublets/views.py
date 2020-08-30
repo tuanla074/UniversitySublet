@@ -164,13 +164,15 @@ def check_admin(user):
 
 @user_passes_test(check_admin)
 def upload_images(request):
-    return render(request, 'sublets/upload_images.html')
+    return render(request, 'sublets/upload_images.html', {'sublisting': SubletListing.objects.all()[::-1]})
 
 
-def successImages(request, listing_id):
+@user_passes_test(check_admin)
+def successImages(request):
+    listing_id = request.POST.get('choice')
     sublet_place = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
     if request.method == 'POST':
-        for housingImage in request.FILES.getlist('housingImages'):
+        for housingImage in request.POST.getlist('housingImages'):
             instance = ImageModel(main_image=housingImage, image=sublet_place)
             instance.save()
 

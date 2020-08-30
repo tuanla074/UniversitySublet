@@ -2,9 +2,16 @@
 {% block main_content %}
 
 <h3>This page was created to select and upload multiple images at once.</h3><br>
-<form action="{% url 'sublets:successImages' listing_id=%}" method="POST">
+<form action="{% url 'sublets:successImages' %}" method="POST" style="text-align: left; float: left;">
     {% csrf_token %}
-    <label for="housingImages" style="float: left">Select images:</label><br>
+
+    <label for="choice">Choose a listing:</label><br>
+    <select required name="choice" id="choice">
+        {% for item in sublisting %}
+            <option value="{{ item.id }}">{{item.sublet_place.sublet_address}} - {{item.room_number}}</option>
+        {% endfor%}
+    </select><br>
+    <label for="housingImages">Select images:</label><br>
     <input required type="file" id="housingImages" name="housingImages" multiple>
     <input type="submit" class="specific_button btn" value="Submit">
 </form>
