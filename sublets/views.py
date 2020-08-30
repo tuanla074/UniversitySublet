@@ -48,7 +48,8 @@ def details(request, listing_id):
     detail_sublet = get_object_or_404(
         SubletListing.objects.select_related('sublet_place', 'sublet_gender', 'sublet_legal_fee',
                                              'sublet_owner_info').all(), pk=listing_id)
-    return render(request, 'sublets/details.html', {'detail_sublet': detail_sublet})
+    image_listing = detail_sublet.imagemodel_set.all()
+    return render(request, 'sublets/details.html', {'detail_sublet': detail_sublet, 'images': image_listing})
 
 
 def subtenantInfo(request, listing_id):
@@ -143,7 +144,7 @@ def successMsg(request, args):
         admin_mail = EmailMessage('You have made a new contract',
                             'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
                             str(args) + '/contract', 'unisublet@gmail.com'
-                            , [nathan.hamilton.email@gmail.com])
+                            , ['nathan.hamilton.email@gmail.com'])
         admin_mail.attach_file('img/short.jpg')
         admin_mail.send()
     return render(request, 'sublets/success.html', {'amount': amount})
