@@ -141,7 +141,7 @@ def successMsg(request, args):
         admin_mail = EmailMessage('You have made a new contract',
                             'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
                             str(args) + '/contract', 'unisublet@gmail.com'
-                            , [nathan.hamilton.email@gmail.com])
+                            , ['nathan.hamilton.email@gmail.com'])
         admin_mail.attach_file('img/short.jpg')
         admin_mail.send()
     return render(request, 'sublets/success.html', {'amount': amount})
