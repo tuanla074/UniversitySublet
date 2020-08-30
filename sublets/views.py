@@ -78,7 +78,7 @@ def legalFee(request, listing_id):
         gr_address = request.POST.get('gr_addr', False)
         subtenant = Subtenant(legal_name=fullname, phone_number=phone, email=user_email,
                               photo_id=photoId, signature=user_signature,
-                              chosen_sub=sublet_place ,gr_name=gr_name, gr_phone=gr_phone,
+                              chosen_sub=sublet_place, gr_name=gr_name, gr_phone=gr_phone,
                               gr_email=gr_email, gr_address=gr_address)
         subtenant.save()
 
