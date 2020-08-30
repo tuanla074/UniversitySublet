@@ -1,0 +1,13 @@
+{% extends "sublets/base.html" %}
+{% block main_content %}
+
+<h3>This page was created to select and upload multiple images at once.</h3><br>
+<form action="{% url 'sublets:successImages' listing_id=%}" method="POST">
+    {% csrf_token %}
+    <label for="housingImages" style="float: left">Select images:</label><br>
+    <input required type="file" id="housingImages" name="housingImages" multiple>
+    <input type="submit" class="specific_button btn" value="Submit">
+</form>
+
+
+{% endblock %}
