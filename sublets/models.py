@@ -63,7 +63,7 @@ class SubletListing(models.Model):
 
 
 class ImageModel(models.Model):
-    main_image = models.ImageField(upload_to='img', null=True)
+    main_image = models.ImageField(null=True, blank=True)
     image = models.ForeignKey(SubletListing, null=True, on_delete=models.CASCADE)
 
 
