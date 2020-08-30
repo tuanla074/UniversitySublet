@@ -16,6 +16,8 @@ urlpatterns = [
     path('success/<int:args>/', views.successMsg, name="success"),
     path('About/', views.About, name="About"),
     path('FAQ/', views.FAQ, name="FAQ"),
+    path('upload_images/', views.upload_images, name="upload_images"),
+    path('successImages', views.successImages, name="successImages"),
 
 
 ]

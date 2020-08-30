@@ -1,10 +1,12 @@
+from django.contrib.auth.decorators import user_passes_test
 from django.shortcuts import render, redirect, get_object_or_404
+
 
 # Create your views here.
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 
-from sublets.models import SubletListing, Subtenant
+from sublets.models import SubletListing, Subtenant, ImageModel
 from django.template.loader import get_template
 from io import BytesIO, StringIO
 from django.core.mail import EmailMessage
@@ -153,3 +155,22 @@ def About(request):
 
 def FAQ(request):
     return render(request, 'sublets/FAQ.html')
+
+
+def check_admin(user):
+    return user.is_superuser
+
+
+@user_passes_test(check_admin)
+def upload_images(request):
+    return render(request, 'sublets/upload_images.html')
+
+
+def successImages(request, listing_id):
+    sublet_place = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
+    if request.method == 'POST':
+        for housingImage in request.FILES.getlist('housingImages'):
+            instance = ImageModel(main_image=housingImage, image=sublet_place)
+            instance.save()
+
+        return HttpResponse('OK')
