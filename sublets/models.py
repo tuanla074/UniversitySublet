@@ -56,7 +56,7 @@ class SubletListing(models.Model):
     sublet_legal_fee = models.ForeignKey(LegalFee, on_delete=models.CASCADE)
 
     def __str__(self):
-        pre_text = self.sublet_place.sublet_address + "-" + self.room_number
+        pre_text = self.sublet_building.sublet_address + "-" + self.room_number
         if self.sublet_status == 1:
             return "Status [" + pre_text + "]: showing"
         return "Status [" + pre_text + "]: not showing"
