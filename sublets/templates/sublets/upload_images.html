@@ -2,7 +2,8 @@
 {% block main_content %}
 
 <h3>This page was created to select and upload multiple images at once.</h3><br>
-<form action="{% url 'sublets:successImages' %}" method="POST" style="text-align: left; float: left;">
+<form action="{% url 'sublets:successImages' %}" method="POST" style="text-align: left; float: left;"
+      enctype="multipart/form-data">
     {% csrf_token %}
 
     <label for="choice">Choose a listing:</label><br>

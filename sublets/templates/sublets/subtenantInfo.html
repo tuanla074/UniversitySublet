@@ -15,7 +15,7 @@
 {% if error_message %} <p><strong> {{error_message}} </strong></p> {% endif %}
 
 
-<form action="{% url 'sublets:legalFee' listing_id=sublet.id %}" method="POST">
+<form action="{% url 'sublets:legalFee' listing_id=sublet.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset>
         <legend>Subtenant Information</legend>

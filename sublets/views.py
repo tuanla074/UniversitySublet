@@ -70,10 +70,10 @@ def pdf_view(request, listing_id):
 def legalFee(request, listing_id):
     sublet_place = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
     if request.method == 'POST':
+        photoId = request.FILES['photoId']
         fullname = request.POST.get('fullname', False)
         phone = request.POST.get('phone', False)
         user_email = request.POST.get('email', False)
-        photoId = request.POST.get('photoId', False)
         user_signature = request.POST.get('signature', False)
         gr_name = request.POST.get('gr_name', False)
         gr_phone = request.POST.get('gr_phone', False)
@@ -145,7 +145,7 @@ def successMsg(request, args):
                             'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
                             str(args) + '/contract', 'unisublet@gmail.com'
                             , ['nathan.hamilton.email@gmail.com'])
-        admin_mail.attach_file('static/images/'+renter_info.photo_id)
+        admin_mail.attach_file('static/images/'+str(renter_info.photo_id))
         admin_mail.send()
     return render(request, 'sublets/success.html', {'amount': amount})
 
@@ -172,8 +172,8 @@ def successImages(request):
     listing_id = request.POST.get('choice')
     sublet_place = get_object_or_404(SubletListing.objects.all(), pk=listing_id)
     if request.method == 'POST':
-        for housingImage in request.POST.getlist('housingImages'):
+        for housingImage in request.FILES.getlist('housingImages'):
             instance = ImageModel(main_image=housingImage, image=sublet_place)
             instance.save()
 
-        return HttpResponse('OK')
+        return redirect('http://127.0.0.1:8000/admin/')

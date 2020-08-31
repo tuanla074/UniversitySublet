@@ -51,7 +51,7 @@ class SubletListing(models.Model):
     room_number = models.CharField(max_length=100)
     utilities = models.CharField(max_length=5000)
     sublet_description = models.TextField(max_length=5000, default="No description.")
-    sublet_main_image = models.ImageField(null=True, blank=True, upload_to='static/images/')
+    sublet_main_image = models.ImageField(null=True, blank=True)
     sublet_gender = models.ForeignKey(SubletGender, on_delete=models.CASCADE)
     sublet_legal_fee = models.ForeignKey(LegalFee, on_delete=models.CASCADE)
 
@@ -63,7 +63,7 @@ class SubletListing(models.Model):
 
 
 class ImageModel(models.Model):
-    main_image = models.ImageField(null=True, blank=True,  upload_to='static/images/')
+    main_image = models.ImageField(null=True, blank=True)
     image = models.ForeignKey(SubletListing, null=True, on_delete=models.CASCADE)
 
 
@@ -71,7 +71,7 @@ class Subtenant(models.Model):
     legal_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=50)
     email = models.CharField(max_length=800)
-    photo_id = models.ImageField(upload_to='img')
+    photo_id = models.ImageField(null=True, blank=True)
     date = models.DateField(auto_now=True)
     signature = models.CharField(max_length=200)
     chosen_sub = models.ForeignKey(SubletListing, on_delete=models.CASCADE, default=1)
