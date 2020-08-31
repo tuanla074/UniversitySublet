@@ -46,7 +46,8 @@ def index(request):
 
 def details(request, listing_id):
     detail_sublet = get_object_or_404(
-        SubletListing.objects.select_related('sublet_place', 'sublet_gender', 'sublet_legal_fee',
+        SubletListing.objects.select_related('sublet_building'
+                                             '', 'sublet_gender', 'sublet_legal_fee',
                                              'sublet_owner_info').all(), pk=listing_id)
     image_listing = detail_sublet.imagemodel_set.all()
     return render(request, 'sublets/details.html', {'detail_sublet': detail_sublet, 'images': image_listing})
@@ -54,7 +55,7 @@ def details(request, listing_id):
 
 def subtenantInfo(request, listing_id):
     sublet = get_object_or_404(
-        SubletListing.objects.select_related('sublet_place', 'sublet_gender', 'sublet_legal_fee',
+        SubletListing.objects.select_related('sublet_building', 'sublet_gender', 'sublet_legal_fee',
                                              'sublet_owner_info').all(), pk=listing_id)
     return render(request, 'sublets/subtenantInfo.html', {'sublet': sublet})
 
@@ -137,14 +138,14 @@ def successMsg(request, args):
         renter_info.save()
         mail = EmailMessage('This is your Contract',
                             'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
-                            str(args) + '/contract', 'unisublet@gmail.com'
+                            str(args) + '/contract', 'studioussublets@gmail.com'
                             , [renter_info.email])
         mail.send()
 
         admin_mail = EmailMessage('You have made a new contract',
                             'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
-                            str(args) + '/contract', 'unisublet@gmail.com'
-                            , ['nathan.hamilton.email@gmail.com'])
+                            str(args) + '/contract', 'studioussublets@gmail.com'
+                            , ['studioussublets@gmail.com'])
         admin_mail.attach_file('static/images/'+str(renter_info.photo_id))
         admin_mail.send()
     return render(request, 'sublets/success.html', {'amount': amount})

@@ -14,16 +14,18 @@
     <ul style="list-style-type:none" class="text-dark">
     {% for sublet in sublet_listing %}
         {% if sublet.sublet_status == 1%}
-            <li class="col-md-5 border border-dark text-dark text-center">
+            <li class="col-md-5 border border-dark text-dark text-center" style="border-bottom: solid">
                 <a href="{% url 'sublets:details' listing_id=sublet.id %}">
-                    <img src="{{ sublet.sublet_main_image.url }}" style="margin: 10px; width: 100%"><br/>
+                    <img src="{{ sublet.sublet_main_image.url }}" style="margin: 10px; width: 100%; "><br/>
                 </a>
-                Start date: {{ sublet.sublet_start_date }} <br />
-                End date: {{ sublet.sublet_end_date }} <br />
-                Address: {{ sublet.sublet_place.sublet_address }} <br />
-                Company: {{ sublet.sublet_place.sublet_company }} <br />
-                Price: {{ sublet.sublist_price}} CAD<br />
-                Utilities: {{ sublet.utilities}}
+                <a href="{% url 'sublets:details' listing_id=sublet.id %}">
+                    Start date: {{ sublet.sublet_start_date }} <br />
+                    End date: {{ sublet.sublet_end_date }} <br />
+                    Address: {{ sublet.sublet_place.sublet_address }} <br />
+                    Company: {{ sublet.sublet_place.sublet_company }} <br />
+                    Price: {{ sublet.sublist_price}} CAD<br />
+                    Utilities: {{ sublet.utilities}}
+                </a>
             {% if forloop.counter|divisibleby:"4" and not forloop.last %}
             {% endif %}
             </li>

@@ -4,7 +4,7 @@ from django.db import models
 
 
 # Create your models here.
-class SubletPlace(models.Model):
+class SubletBuilding(models.Model):
     sublet_company = models.CharField(max_length=100)
     sublet_address = models.CharField(max_length=800)
     website = models.CharField(max_length=800)
@@ -38,7 +38,7 @@ class LegalFee(models.Model):
 
 
 class SubletListing(models.Model):
-    sublet_place = models.ForeignKey(SubletPlace, on_delete=models.CASCADE)
+    sublet_building = models.ForeignKey(SubletBuilding, on_delete=models.CASCADE)
     sublet_owner_info = models.ForeignKey(SubletOwnerInfo, on_delete=models.CASCADE)
     sublist_price = models.FloatField(default=0)
     sublet_start_date = models.DateField()

@@ -9,7 +9,7 @@
     <label for="choice">Choose a listing:</label><br>
     <select required name="choice" id="choice">
         {% for item in sublisting %}
-            <option value="{{ item.id }}">{{item.sublet_place.sublet_address}} - {{item.room_number}}</option>
+            <option value="{{ item.id }}">{{item.sublet_building.sublet_address}} - {{item.room_number}}</option>
         {% endfor%}
     </select><br>
     <label for="housingImages">Select images:</label><br>

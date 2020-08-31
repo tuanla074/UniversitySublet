@@ -12,10 +12,10 @@
 And {{ renter_info.legal_name}} (Hereinafter called the Sub-tenant of the second part) </p>
 <p>
     Whereas the Tenants are signatories to a certain Tenancy Agreement inclusive of the period of
-the sublets desired tenancy. {{ contract_info.sublet_owner_info.sublet_owner_name }} (Tenants)  and {{ contract_info.sublet_place.landlord }} (Landlord) </p>
+the sublets desired tenancy. {{ contract_info.sublet_owner_info.sublet_owner_name }} (Tenants)  and {{ contract_info.sublet_building.landlord }} (Landlord) </p>
 <p>And whereas the Tenants are desirous of subletting their premises and whereas the subtenants
 are desirous of occupying the premises now currently rented by the tenants, municipally knows
-as {{ contract_info.sublet_place.sublet_address }} and the parties hereto agree as follows:</p>
+as {{ contract_info.sublet_building.sublet_address }} and the parties hereto agree as follows:</p>
 <p>1. The sub-tenants tenancy shall commence on {{contract_info.sublet_start_date}} and end on {{contract_info.sublet_end_date }}.</p>
 <p>2. The tenants direct the sub-tenants to pay the aforementioned rent directly to University
 Sublets (QuarterPoint Limited) or the sublet manager 3 days before the start of the next
@@ -93,7 +93,7 @@ the term of this agreement. The Resident and Guarantor further agree to immediat
 damage to the Owner forthwith upon such damage occurring, including particulars as to the person(s) who
     caused such damage.</p>
 <p>SUB-TENANT NAME: {{ renter_info.legal_name }}</p>
-<p>RENTED ADDRESS:{{ contract_info.sublet_place.sublet_address }}</p>
+<p>RENTED ADDRESS:{{ contract_info.sublet_building.sublet_address }}</p>
 <p>MONTHLY RENTAL AMOUNT: {{contract_info.sublist_price}}$</p>
 <p>RENTAL TERM: {{ contract_info.sublet_start_date }} - {{ contract_info.sublet_end_date }}</p>
 <p></p>

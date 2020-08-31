@@ -60,11 +60,12 @@
         <span style="width: 30em; height: 2em; letter-spacing: 0em" id="card-errors" role="alert"></span>
       </div>
       </div>
-    <button class="btn" style="background-color=#3cb6d3; margin-top: 10px; color:white">Submit Payment</button>
+    <button class="btn" style="background-color=#3cb6d3; margin-top: 10px; color:white">Submit $50 Payment</button>
     </form>
 </div>
 <div class="col-sm-6">
-    <p style="float: right">This is a mandatory ${{ sublet.sublet_legal_fee.legal_fee }} legal fee for processing your reservation.</p>
+    <p style="float: right">Your first months rent will be discounted
+        ${{ sublet.sublet_legal_fee.legal_fee|floatformat:2 }}.</p>
 </div>
     </div>
 <img src="{% static 'images/credit_card_companies2.jpeg' %}" style="width: 100%;">

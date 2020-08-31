@@ -1,7 +1,7 @@
 import django_filters
 from django import forms
 from django.forms import NumberInput
-from django_filters import NumberFilter, DateTimeFilter, DateFilter
+from django_filters import NumberFilter, DateTimeFilter, DateFilter, ChoiceFilter
 from .models import *
 
 
@@ -15,6 +15,8 @@ class SubletFilter(django_filters.FilterSet):
     end_date = DateTimeFilter(field_name="end_date_search", lookup_expr='lte', label='end subletting date',
                               widget=DateInput({'type': 'date', 'class': 'sp'}))
     price = NumberFilter(field_name="sublist_price", lookup_expr='lte', label='max rent',
+                         widget=NumberInput({'class': 'sp'}))
+    min_price = NumberFilter(field_name="sublist_price", lookup_expr='gte', label='min rent',
                          widget=NumberInput({'class': 'sp'}))
 
     class Meta:
