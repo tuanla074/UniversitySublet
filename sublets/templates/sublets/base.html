@@ -238,7 +238,8 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{% url 'sublets:index' %}" style="margin: 0px;">
-        <img src="{% static 'images/Studious_Sublets_v2_edit.jpg' %}" style="width: 50%; margin: 0px;">
+        <p style="margin: 0px; font-size: 12px;">Studious</p>
+        <p style="margin: 0px; font-size: 12px;">&nbsp Sublets</p>
       </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar" style="margin: 0%;">
@@ -253,7 +254,9 @@
 
 
 <div class="jumbotron text-center">
-  <h1><a href="{% url 'sublets:index' %}" style="color: white;">Studious Sublets</a></h1>
+  <a href="{% url 'sublets:index' %}" style="color: white;">
+    <img src="{% static 'images/Studious_Sublets_v2_edit.jpg' %}" style="width: 50%; margin: 0px;">
+  </a>
     <p>Subletting made simple</p>
 </div>
 <div id="services" class="container-fluid text-center">
