@@ -21,8 +21,8 @@
                 <a href="{% url 'sublets:details' listing_id=sublet.id %}">
                     Start date: {{ sublet.sublet_start_date }} <br />
                     End date: {{ sublet.sublet_end_date }} <br />
-                    Address: {{ sublet.sublet_place.sublet_address }} <br />
-                    Company: {{ sublet.sublet_place.sublet_company }} <br />
+                    Address: {{ sublet.sublet_building.sublet_address }} <br />
+                    Company: {{ sublet.sublet_building.sublet_company }} <br />
                     Price: {{ sublet.sublist_price}} CAD<br />
                     Utilities: {{ sublet.utilities}}
                 </a>

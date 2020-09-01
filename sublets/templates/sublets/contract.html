@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -28,11 +29,11 @@ Sublets (QuarterPoint Limited) or the sublet manager 3 days before the start of 
     Tenancy Agreement.</p>
 <p>6. Any special conditions that are to apply to this agreement are noted in Schedule A of this document.</p>
 <p>This agreement signed on {{ renter_info.date }}.</p>
-<p>{{ renter_info.signature }}</p>
+<p>__________________</p>
 <p>Sub-tenant</p>
 <p>__________________</p>
 <p>Tenant</p>
-<p>__________________</p>
+<img src="http://127.0.0.1:8000/static/images/TristanSignature.png" style="width: 10%; height: 2%">
 <p>Sublet Manager</p>
 <h1 style="text-align: center">Schedule A</h1>
 <table style="width:100%" border="solid">
@@ -94,13 +95,13 @@ damage to the Owner forthwith upon such damage occurring, including particulars 
     caused such damage.</p>
 <p>SUB-TENANT NAME: {{ renter_info.legal_name }}</p>
 <p>RENTED ADDRESS:{{ contract_info.sublet_building.sublet_address }}</p>
-<p>MONTHLY RENTAL AMOUNT: {{contract_info.sublist_price}}$</p>
+<p>MONTHLY RENTAL AMOUNT: {{contract_info.sublist_price|floatformat:2}}$</p>
 <p>RENTAL TERM: {{ contract_info.sublet_start_date }} - {{ contract_info.sublet_end_date }}</p>
 <p></p>
 <p>Guarantor Name : {{ renter_info.gr_name }}</p>
 <p>Phone #: {{ renter_info.gr_phone }}</p>
 <p>Email: {{ renter_info.gr_email }}</p>
-<p>Home Address:{{ renter_info.gr_addr }}</p>
+<p>Home Address:{{ renter_info.gr_address }}</p>
 <p>THE GUARANTOR SIGNING THIS AGREEMENT TAKES FULL RESPONSIBILITY FOR ALL OF THE
 TERMS AND CONDITIONS IN THE Sublet Agreement THAT THE SUB-TENANT IS RESPONSIBLE
     FOR, SIGNED BY THE SUB-TENANT FOR WHOM THEY ARE THE GUARANTOR.</p>

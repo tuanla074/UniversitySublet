@@ -136,9 +136,15 @@ def successMsg(request, args):
         renter_info = renter_info[len(renter_info) - 1]
         renter_info.payment_status = 1
         renter_info.save()
-        mail = EmailMessage('This is your Contract',
-                            'Follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
-                            str(args) + '/contract', 'studioussublets@gmail.com'
+        mail = EmailMessage('Your sublet contract',
+                            'Thank you for choosing Studious Sublets!\n' +
+                            'You can follow this link to get your contract: http://127.0.0.1:8000/sublets/' +
+                            str(args) + '/contract' + '\n Additionally, you may use this link ' +
+                            'https://smallpdf.com/sign-pdf' + ' to fill out the signature fields in the given contract.'
+                            + '\n\nPlease send the final version' +
+                            ' of the contract with the signatures as a response to this email.\n\nSincerely,\nTristan,'
+                            + ' Lead Manager, Studious Sublets',
+                            'studioussublets@gmail.com'
                             , [renter_info.email])
         mail.send()
 
